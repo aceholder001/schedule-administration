@@ -37,10 +37,30 @@ function Cita() {
     } = useFetch("http://localhost:4000/api/citas"); // obtener horarios después de cargar la página
 
     useEffect(() => {
-        setCitas(Array.isArray(data) ? data.map(cita => ({
-            ...cita,
-            color: colors[Math.floor(Math.random() * colors.length)]
-        })) : []);
+        setCitas(Array.isArray(data) ? data.map(cita => {
+            let fechaDeseada = new Date(cita.fecha);
+
+            // Ajusta la fecha a la zona horaria del servidor
+            fechaDeseada.setMinutes(fechaDeseada.getMinutes() + fechaDeseada.getTimezoneOffset());
+
+            return {
+                extendedProps: {
+                    nombreCliente: cita.nombreCliente, // nombre del cliente
+                    servicio: cita.servicio.map(servicio => servicio.nombre).join(", "), // nombre del servicio
+                    correoElectronico: cita.correoElectronico, // correo electrónico
+                    telefono: cita.telefono, // telefono
+                    rut: cita.rut, // rut del cliente
+                    fecha: fechaDeseada.toLocaleString(), // fecha de la cita,
+                    hora: cita.hora // hora de la cita
+                },
+                start: fechaDeseada, // designado en
+                end: fechaDeseada, // lo mismo con inicio
+                allDay: false,
+                className: "cita-evento",
+                borderColor: "transparent",
+                backgroundColor: colors[Math.floor(Math.random() * colors.length)]
+            };
+        }) : []);
     }, [data]);
 
     const handleEventClick = props => { // mostrar un detalle de la cita
@@ -53,12 +73,14 @@ function Cita() {
             <div onClick={() => handleEventClick(info.event.extendedProps)}>
                 <p>{info.event.extendedProps.servicio}</p>
                 <p>{info.event.extendedProps.nombreCliente}</p>
-                <p>{info.event.start.toLocaleString()}</p>
+                <p>{info.timeText}</p>
             </div>
         );
     };
 
     const usuario = localStorage.getItem("usuario"); // obtener privilegio
+
+    console.log(data);
 
     return (
         <div>
@@ -77,23 +99,7 @@ function Cita() {
                                 center: "title",
                                 right: "timeGridWeek,timeGridDay"
                             }}
-                            events={citas.map(cita => ({
-                                extendedProps: {
-                                    nombreCliente: cita.nombreCliente, // nombre del cliente
-                                    servicio: cita.servicio.map(servicio => servicio.nombre).join(", "), // nombre del servicio
-                                    correoElectronico: cita.correoElectronico, // correo electrónico
-                                    telefono: cita.telefono, // telefono
-                                    rut: cita.rut, // rut del cliente
-                                    fecha: cita.fecha, // fecha de la cita,
-                                    hora: cita.hora // hora de la cita
-                                },
-                                start: cita.fecha, // designado en
-                                end: cita.fecha, // lo mismo con inicio
-                                allDay: false,
-                                className: "cita-evento",
-                                backgroundColor: cita.color,
-                                borderColor: "transparent"
-                            }))}
+                            events={citas}
                             nowIndicator
                         />
                     )}
@@ -112,7 +118,7 @@ function Cita() {
                             <DialogContentText>CorreoElectronico:&nbsp;{cita.correoElectronico}</DialogContentText>
                             <DialogContentText>Telefono:&nbsp;{cita.telefono}</DialogContentText>
                             <DialogContentText>Rut:&nbsp;{cita.rut}</DialogContentText>
-                            <DialogContentText>Fecha:&nbsp;{new Date(cita.fecha).toLocaleString()}</DialogContentText>
+                            <DialogContentText>Fecha:&nbsp;{cita.fecha}</DialogContentText>
                         </DialogContent>
                     )}
                     <DialogActions>

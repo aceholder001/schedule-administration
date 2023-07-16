@@ -79,7 +79,7 @@ citaCtrl.obtenerCitas = async (req, res) => {
         .populate('servicioId', ['nombre']);
 
     res.json(citas.map((cita) => {
-        cita.fecha.setHours(cita.hora.split(":")[0]);
+        cita.fecha.setUTCHours(cita.hora.split(":")[0]);
 
         return {
             cita: cita._id,
