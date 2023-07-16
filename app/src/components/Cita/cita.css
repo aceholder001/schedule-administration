@@ -44,7 +44,8 @@
 }
 
 .fc-timegrid-event-harness-inset {
-    inset: 549px -3% -660px -1.5% !important;
+    inset-inline-end: -3% !important;
+    inset-inline-start: -1.8% !important;
 }
 
 .fc-button {

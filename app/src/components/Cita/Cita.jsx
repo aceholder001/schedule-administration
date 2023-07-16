@@ -80,6 +80,8 @@ function Cita() {
 
     const usuario = localStorage.getItem("usuario"); // obtener privilegio
 
+    console.log(data);
+
     return (
         <div>
             <HeaderGeneral />
