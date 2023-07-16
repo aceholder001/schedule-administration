@@ -1,5 +1,6 @@
 import React, {
-    useState
+    useState,
+    useEffect
 } from "react";
 import useFetch from "react-fetch-hook";
 
@@ -25,14 +26,22 @@ import {
 import "./cita.css";
 
 function Cita() {
+    const [citas, setCitas] = useState([]);
     const [cita, setCita] = useState(null); // detalle de la cita
     const [open, setOpen] = useState(false); // diálogo abierta?
 
-    const {
+    let {
         data,
         isLoading,
         error
     } = useFetch("http://localhost:4000/api/citas"); // obtener horarios después de cargar la página
+
+    useEffect(() => {
+        setCitas(Array.isArray(data) ? data.map(cita => ({
+            ...cita,
+            color: colors[Math.floor(Math.random() * colors.length)]
+        })) : []);
+    }, [data]);
 
     const handleEventClick = props => { // mostrar un detalle de la cita
         setCita(props); // establecer un detalle de cita
@@ -64,19 +73,19 @@ function Cita() {
                             center: "title",
                             right: "timeGridWeek,timeGridDay"
                         }}
-                        events={data.map(event => ({
+                        events={citas.map(cita => ({
                             extendedProps: {
-                                nombreCliente: event.nombreCliente, // nombre del cliente
-                                servicio: event.servicio.map(servicio => servicio.nombre).join(", "), // nombre del servicio
-                                correoElectronico: event.correoElectronico, // correo electrónico
-                                telefono: event.telefono, // telefono
-                                rut: event.rut // rut del cliente
+                                nombreCliente: cita.nombreCliente, // nombre del cliente
+                                servicio: cita.servicio.map(servicio => servicio.nombre).join(", "), // nombre del servicio
+                                correoElectronico: cita.correoElectronico, // correo electrónico
+                                telefono: cita.telefono, // telefono
+                                rut: cita.rut // rut del cliente
                             },
-                            start: event.fecha, // designado en
-                            end: event.fecha, // lo mismo con inicio
+                            start: cita.fecha, // designado en
+                            end: cita.fecha, // lo mismo con inicio
                             allDay: false,
                             className: "cita-evento",
-                            backgroundColor: colors[Math.floor(Math.random() * colors.length)],
+                            backgroundColor: cita.color,
                             borderColor: "transparent"
                         }))}
                         nowIndicator
