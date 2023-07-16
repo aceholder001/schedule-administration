@@ -31,6 +31,8 @@
 .cita-evento {
     height: fit-content;
     padding: 0 10px;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     cursor: pointer;
 }
 
@@ -39,6 +41,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.fc-timegrid-event-harness-inset {
+    inset: 549px -3% -660px -1.5% !important;
 }
 
 .fc-button {

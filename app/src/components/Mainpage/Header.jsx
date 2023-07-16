@@ -2,7 +2,7 @@ import React, {
     useState
 } from "react";
 import {
-    Link
+    useNavigate
 } from "react-router-dom";
 import {
     FaUser,
@@ -17,6 +17,7 @@ import {
     DialogContent,
     DialogActions,
     TextField,
+    DialogContentText,
 } from "@mui/material";
 
 import logo from "../../assets/logo.png";
@@ -24,13 +25,23 @@ import logo from "../../assets/logo.png";
 import "../styles/header.css";
 
 function Header() {
+    const navigate = useNavigate();
+
     const [usuario, setUsuario] = useState(""); // nombre de usuario
     const [contrasena, setContrasena] = useState(""); // contraseña
+    const [error, setError] = useState(""); // error
     const [open, setOpen] = useState(false); // diálogo abierto?
 
     const handleSignInClick = () => { // Agrega la lógica para redirigir a la parte de login
-        localStorage.setItem("usuario", "administrador"); // establezca el privilegio de administrador, ¡solo para fines de prueba!
-        setOpen(false);
+        if (usuario === "admin" && contrasena === "123456") {
+            localStorage.setItem("usuario", "administrador"); // establezca el privilegio de administrador, ¡solo para fines de prueba!
+            setError("");
+            setOpen(false);
+
+            navigate("/Cita");
+        } else {
+            setError("Usuario o contraseña incorrectos!");
+        }
     };
 
     return (
@@ -61,6 +72,7 @@ function Header() {
             >
                 <DialogTitle>Iniciar sesión</DialogTitle>
                 <DialogContent>
+                    {error && <DialogContentText color="red">{error}</DialogContentText>}
                     <TextField
                         label="Nombre de usuario"
                         type="text"
@@ -80,14 +92,12 @@ function Header() {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Link to="/Cita">
-                        <Button
-                            color="error"
-                            variant="contained"
-                            onClick={handleSignInClick}
-                            fullWidth
-                        >Iniciar sesión</Button>
-                    </Link>
+                    <Button
+                        color="error"
+                        variant="contained"
+                        onClick={handleSignInClick}
+                        fullWidth
+                    >Iniciar sesión</Button>
                 </DialogActions>
             </Dialog>
         </div>
