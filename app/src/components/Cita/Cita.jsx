@@ -32,7 +32,7 @@ function Cita() {
         data,
         isLoading,
         error
-    } = useFetch("http://192.168.122.92:4000/api/citas");
+    } = useFetch("http://localhost:4000/api/citas");
 
     const handleEventClick = props => {
         setCita(props);
