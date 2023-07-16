@@ -86,13 +86,13 @@ function BodyDatos() {
             className={errors.rut ? "error" : ""}
             onBlur={(e) => {
                 const rut = e.target.value;
-                // if (!validateRut(rut)) {
-                //     setRutError('RUT no válido');
-                //     setIsValidRut(false);
-                //   } else {
+                if (!validateRut(rut)) {
+                    setRutError('RUT no válido');
+                    setIsValidRut(false);
+                  } else {
                     setRutError(''); // limpia el mensaje de error si el RUT es válido
                     setIsValidRut(true);
-                  // }
+                  }
 
             }}
           />
