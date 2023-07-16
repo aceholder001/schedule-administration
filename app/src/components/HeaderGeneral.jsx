@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 function HeaderGeneral() {
   const goBack = () => {
+    localStorage.removeItem("usuario");
     window.history.back();
   };
   return (

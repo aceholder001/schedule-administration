@@ -14,9 +14,6 @@ function Final() {
       <Link to="/">
         <button className="boton-final">Volver al Inicio</button>
       </Link>
-      <Link to="/Cita">
-        <button className="boton-final">Ver Cita</button>
-      </Link>
       <Footer />
     </div>
   );

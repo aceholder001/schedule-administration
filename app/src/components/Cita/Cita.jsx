@@ -28,7 +28,7 @@ import "./cita.css";
 function Cita() {
     const [citas, setCitas] = useState([]);
     const [cita, setCita] = useState(null); // detalle de la cita
-    const [open, setOpen] = useState(false); // diálogo abierta?
+    const [open, setOpen] = useState(false); // diálogo abierto?
 
     let {
         data,
@@ -53,45 +53,52 @@ function Cita() {
             <div onClick={() => handleEventClick(info.event.extendedProps)}>
                 <p>{info.event.extendedProps.servicio}</p>
                 <p>{info.event.extendedProps.nombreCliente}</p>
+                <p>{info.event.start.toLocaleString()}</p>
             </div>
         );
     };
+
+    const usuario = localStorage.getItem("usuario"); // obtener privilegio
 
     return (
         <div>
             <HeaderGeneral />
             <h1 className="titulo-cita">Cita</h1>
-            <div className="cita">
-                {error && <h2>{error}</h2>}
-                {isLoading ? <h2 className="cita-cargando">Cargando...</h2> : (
-                    <FullCalendar
-                        plugins={[timeGridPlugin]}
-                        eventContent={renderEvent}
-                        initialView="timeGridWeek"
-                        headerToolbar={{
-                            left: "prev,next today",
-                            center: "title",
-                            right: "timeGridWeek,timeGridDay"
-                        }}
-                        events={citas.map(cita => ({
-                            extendedProps: {
-                                nombreCliente: cita.nombreCliente, // nombre del cliente
-                                servicio: cita.servicio.map(servicio => servicio.nombre).join(", "), // nombre del servicio
-                                correoElectronico: cita.correoElectronico, // correo electrónico
-                                telefono: cita.telefono, // telefono
-                                rut: cita.rut // rut del cliente
-                            },
-                            start: cita.fecha, // designado en
-                            end: cita.fecha, // lo mismo con inicio
-                            allDay: false,
-                            className: "cita-evento",
-                            backgroundColor: cita.color,
-                            borderColor: "transparent"
-                        }))}
-                        nowIndicator
-                    />
-                )}
-            </div>
+            {usuario === "administrador" ? ( // solo el administrador puede ver el cronograma, ¡solo para fines de prueba!
+                <div className="cita">
+                    {error && <h2 className="container">{error}</h2>}
+                    {isLoading ? <h2 className="cita-cargando">Cargando...</h2> : (
+                        <FullCalendar
+                            plugins={[timeGridPlugin]}
+                            eventContent={renderEvent}
+                            initialView="timeGridWeek"
+                            headerToolbar={{
+                                left: "prev,next today",
+                                center: "title",
+                                right: "timeGridWeek,timeGridDay"
+                            }}
+                            events={citas.map(cita => ({
+                                extendedProps: {
+                                    nombreCliente: cita.nombreCliente, // nombre del cliente
+                                    servicio: cita.servicio.map(servicio => servicio.nombre).join(", "), // nombre del servicio
+                                    correoElectronico: cita.correoElectronico, // correo electrónico
+                                    telefono: cita.telefono, // telefono
+                                    rut: cita.rut, // rut del cliente
+                                    fecha: cita.fecha, // fecha de la cita,
+                                    hora: cita.hora // hora de la cita
+                                },
+                                start: cita.fecha, // designado en
+                                end: cita.fecha, // lo mismo con inicio
+                                allDay: false,
+                                className: "cita-evento",
+                                backgroundColor: cita.color,
+                                borderColor: "transparent"
+                            }))}
+                            nowIndicator
+                        />
+                    )}
+                </div>
+            ) : <h2 className="container">Se requiere privilegio de administrador!</h2>}
             <Footer />
             <Dialog
                 open={open}
@@ -105,6 +112,7 @@ function Cita() {
                             <DialogContentText>CorreoElectronico:&nbsp;{cita.correoElectronico}</DialogContentText>
                             <DialogContentText>Telefono:&nbsp;{cita.telefono}</DialogContentText>
                             <DialogContentText>Rut:&nbsp;{cita.rut}</DialogContentText>
+                            <DialogContentText>Fecha:&nbsp;{new Date(cita.fecha).toLocaleString()}</DialogContentText>
                         </DialogContent>
                     )}
                     <DialogActions>
