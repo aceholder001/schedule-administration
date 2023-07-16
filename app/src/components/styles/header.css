@@ -1,0 +1,77 @@
+/* Header css */
+
+.custom-header {
+  display: flex;
+  min-width: 100%;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.admin-header {
+  min-height: 100%;
+  min-width: 30px;
+  color: #c9bdf2;
+
+  /* Estilos adicionales para pantallas más grandes */
+  @media screen and (min-width: 768px) {
+    min-width: 40px; /* Tamaño para pantallas más grandes */
+  }
+  /* Estilos adicionales para pantallas aún más grandes */
+  @media screen and (min-width: 1200px) {
+    min-width: 60px; /* Tamaño del logo para pantallas aún más grandes */
+  }
+}
+
+.app-logo {
+  width: 300px; /* Tamaño inicial del logo */
+
+  /* Estilos adicionales para pantallas más grandes */
+  @media screen and (min-width: 768px) {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 470px; /* Tamaño del logo para pantallas más grandes */
+  }
+
+  /* Estilos adicionales para pantallas aún más grandes */
+  @media screen and (min-width: 1200px) {
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 750px; /* Tamaño del logo para pantallas aún más grandes */
+  }
+}
+
+.wsp-logo {
+  min-height: 100%;
+  min-width: 30px;
+  color: #c9bdf2;
+  margin-right: 20px;
+
+  /* Estilos adicionales para pantallas más grandes */
+  @media screen and (min-width: 768px) {
+    min-width: 50px; /* Tamaño para pantallas más grandes */
+  }
+  /* Estilos adicionales para pantallas aún más grandes */
+  @media screen and (min-width: 1200px) {
+    min-width: 60px; /* Tamaño del logo para pantallas aún más grandes */
+  }
+}
+
+.face-logo {
+  min-height: 100%;
+  min-width: 30px;
+  color: #c9bdf2;
+
+  /* Estilos adicionales para pantallas más grandes */
+  @media screen and (min-width: 768px) {
+    min-width: 50px; /* Tamaño para pantallas más grandes */
+  }
+  /* Estilos adicionales para pantallas aún más grandes */
+  @media screen and (min-width: 1200px) {
+    min-width: 60px; /* Tamaño del logo para pantallas aún más grandes */
+  }
+}
+
+/* Fin Header css */
+
+

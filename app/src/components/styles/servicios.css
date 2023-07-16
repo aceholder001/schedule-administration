@@ -1,0 +1,108 @@
+.body-servicios {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  align-items: center;
+}
+
+.titulo-servicios {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+}
+.contenedor-casillas {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.columna {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio vertical entre las casillas en la columna */
+}
+.casilla {
+  width: 160px;
+  height: 144px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.servicios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 14px 20px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". ."
+    ". ."
+    ". .";
+}
+.casilla-seleccionada {
+  width: 160px;
+  height: 144px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  outline: 4px solid #317f43;
+}
+
+.texto {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins";
+  font-style: normal;
+  color: #1a1a1a;
+}
+
+.servicios-deselect {
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: medium;
+}
+.servicios-select {
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: medium;
+  color: #c9bdf2;
+  text-align: center;
+}
+.error {
+  color: red;
+}
+.prueba {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.casillaPrueba {
+  width: 320px;
+  height: 144px;
+  border: 3px solid #317f43;
+  padding: 10px;
+  margin: 10px;
+}

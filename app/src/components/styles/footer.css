@@ -1,0 +1,6 @@
+.footer{
+    display: flex;
+    min-width: 100%;
+    opacity: 0.4;
+    justify-content: center;
+}

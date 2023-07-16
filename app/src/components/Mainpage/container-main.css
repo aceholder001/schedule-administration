@@ -1,0 +1,13 @@
+/* Estilos pagina principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    min-width: 100%;
+   
+  
+  }
+  
+  /* fin estilos pagina principal */

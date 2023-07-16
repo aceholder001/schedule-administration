@@ -1,0 +1,86 @@
+.container-body-datos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.titulo-datos {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 45px;
+  line-height: 36px;
+  text-align: center;
+  padding-bottom: 3%;
+    
+}
+.formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.campo-datos {
+  margin-bottom: 20px;
+}
+
+.campo-datos label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.campo-datos input {
+  width: 350px;
+  height: 30px;
+  padding: 10px;
+  border: 3px solid #c9bdf2;
+  border-radius: 20px;
+  background-color: transparent;
+}
+.campo-datos input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.campo-datos input.error::placeholder {
+  color: rgb(177, 96, 96);
+}
+
+
+.boton-datos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 282px;
+  height: 49px;
+  color: #1a1a1a;
+  background: #c9bdf2;
+  border-radius: 25px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.error-message{
+  font-size: 14px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: rgb(177, 96, 96);
+}
+
+

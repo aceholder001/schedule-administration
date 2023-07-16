@@ -1,0 +1,84 @@
+.body-horarios {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 100%;
+  align-items: center;
+}
+
+.titulo-horarios {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 45px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.contenedor-horarios {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
+.columna-horarios {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio vertical entre las casillas en la columna */
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.casillaHor {
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  border: 3px solid #c9bdf2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+.seleccionadoHor {
+  background-color: #C9BDF2;
+}
+.casilla-texto {
+  /* Estilos para el texto */
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 16px;
+  font-weight: bold;
+}
+.texto-horarios{
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: medium;
+}
+.horario-seleccionado{
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: medium;
+  color: #C9BDF2;
+  text-align: center;
+  font-size: x-large;
+}
+
+.boton-horario {
+  width: 282px;
+  height: 49px;
+  left: 66px;
+  top: 631px;
+  color: #1a1a1a;
+  background: #c9bdf2;
+  border-radius: 25px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+}
+/* Estilos adicionales si los necesitas */
