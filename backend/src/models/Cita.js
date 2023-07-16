@@ -2,18 +2,18 @@
 const mongoose = require('mongoose');
 
 const CitaSchema = new mongoose.Schema({
-    nombreCliente: String, // name
-    correoElectronico: String, // email
-    telefono: String, // telephone
-    rut: String, //  rut
+    nombreCliente: String,
+    correoElectronico: String,
+    telefono: String,
+    rut: String,
     servicioId: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Servicios'
     }],
-    fecha: Date, // date
-    hora: String, // time
+    fecha: Date,
+    hora: String,
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('Cita', CitaSchema); //
+module.exports = mongoose.model('Cita', CitaSchema);

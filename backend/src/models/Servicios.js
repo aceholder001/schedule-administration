@@ -2,12 +2,12 @@
 const mongoose = require('mongoose');
 
 const ServiciosSchema = new mongoose.Schema({
-    nombre: String, // name
-    descripcion: String,    // description
-    duracion: Number,    // duration
-    precio: Number, // price
-    disponibilidad: Boolean,    // availability
-    imagen: String  // image
+    nombre: String,
+    descripcion: String,
+    duracion: Number,
+    precio: Number,
+    disponibilidad: Boolean,
+    imagen: String
 }, {
     timestamps: true
 });

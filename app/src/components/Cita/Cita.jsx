@@ -20,7 +20,7 @@ import Footer from "../Footer";
 
 import {
     colors
-} from './colors';
+} from "./colors";
 
 import "./cita.css";
 
@@ -67,7 +67,7 @@ function Cita() {
                         events={data.map(event => ({
                             extendedProps: {
                                 nombreCliente: event.nombreCliente,
-                                servicio: event.servicio.map(servicio => servicio.nombre).join(', '),
+                                servicio: event.servicio.map(servicio => servicio.nombre).join(", "),
                                 correoElectronico: event.correoElectronico,
                                 telefono: event.telefono,
                                 rut: event.rut
@@ -77,7 +77,7 @@ function Cita() {
                             allDay: false,
                             className: "cita-evento",
                             backgroundColor: colors[Math.floor(Math.random() * colors.length)],
-                            borderColor: 'transparent'
+                            borderColor: "transparent"
                         }))}
                         nowIndicator
                     />
