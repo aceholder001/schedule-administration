@@ -25,8 +25,8 @@ import {
 import "./cita.css";
 
 function Cita() {
-    const [cita, setCita] = useState(null); // detalle de la cita
-    const [open, setOpen] = useState(false); // diálogo abierta?
+    const [cita, setCita] = useState(null);
+    const [open, setOpen] = useState(false);
 
     const {
         data,
@@ -66,14 +66,14 @@ function Cita() {
                         }}
                         events={data.map(event => ({
                             extendedProps: {
-                                nombreCliente: event.nombreCliente, // nombre del cliente
-                                servicio: event.servicio.map(servicio => servicio.nombre).join(", "), // nombre del servicio
-                                correoElectronico: event.correoElectronico, // correo electrónico
-                                telefono: event.telefono, // telefono
-                                rut: event.rut // rut del cliente
+                                nombreCliente: event.nombreCliente,
+                                servicio: event.servicio.map(servicio => servicio.nombre).join(", "),
+                                correoElectronico: event.correoElectronico,
+                                telefono: event.telefono,
+                                rut: event.rut
                             },
-                            start: event.fecha, // designado en
-                            end: event.fecha, // lo mismo con inicio
+                            start: event.fecha,
+                            end: event.fecha,
                             allDay: false,
                             className: "cita-evento",
                             backgroundColor: colors[Math.floor(Math.random() * colors.length)],
