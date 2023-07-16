@@ -37,6 +37,8 @@ function Cita() {
     } = useFetch("http://localhost:4000/api/citas"); // obtener horarios después de cargar la página
 
     useEffect(() => {
+        console.log(citas);
+        
         setCitas(Array.isArray(data) ? data.map(cita => ({
             ...cita,
             color: colors[Math.floor(Math.random() * colors.length)]
